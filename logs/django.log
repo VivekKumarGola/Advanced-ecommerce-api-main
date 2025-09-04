@@ -1,0 +1,214 @@
+INFO 2025-09-04 00:27:58,735 autoreload 4400 15628 Watching for file changes with StatReloader
+INFO 2025-09-04 00:32:16,134 autoreload 9272 20740 Watching for file changes with StatReloader
+INFO 2025-09-04 00:36:13,653 autoreload 16232 10712 Watching for file changes with StatReloader
+INFO 2025-09-04 00:37:41,029 autoreload 15264 7964 Watching for file changes with StatReloader
+INFO 2025-09-04 00:39:02,157 autoreload 3420 20280 Watching for file changes with StatReloader
+INFO 2025-09-04 00:41:04,541 autoreload 12884 16012 Watching for file changes with StatReloader
+INFO 2025-09-04 00:42:36,195 autoreload 20852 14416 Watching for file changes with StatReloader
+INFO 2025-09-04 00:43:56,858 autoreload 17704 8888 Watching for file changes with StatReloader
+INFO 2025-09-04 00:46:19,808 autoreload 15504 20448 Watching for file changes with StatReloader
+INFO 2025-09-04 00:46:35,186 runserver 15504 17756 [mHTTP GET / 200 [0.15, 127.0.0.1:7197][0m
+INFO 2025-09-04 00:46:36,713 runserver 15504 17756 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:7197][0m
+WARNING 2025-09-04 00:46:38,174 log 15504 6464 Not Found: /favicon.ico
+WARNING 2025-09-04 00:46:38,177 runserver 15504 17756 [33mHTTP GET /favicon.ico 404 [0.06, 127.0.0.1:7197][0m
+INFO 2025-09-04 00:46:43,403 runserver 15504 17756 [mHTTP GET /products/ 200 [0.07, 127.0.0.1:7197][0m
+INFO 2025-09-04 00:46:43,492 runserver 15504 17756 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:7197][0m
+INFO 2025-09-04 00:46:47,046 runserver 15504 17756 [mHTTP GET /products/ 200 [0.04, 127.0.0.1:7197][0m
+INFO 2025-09-04 00:46:47,109 runserver 15504 17756 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:7197][0m
+INFO 2025-09-04 00:46:52,310 runserver 15504 17756 [mHTTP GET /products/ 200 [0.04, 127.0.0.1:7611][0m
+INFO 2025-09-04 00:46:52,387 runserver 15504 17756 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:7611][0m
+INFO 2025-09-04 00:46:53,684 runserver 15504 17756 [mHTTP GET / 200 [0.04, 127.0.0.1:7611][0m
+INFO 2025-09-04 00:46:53,764 runserver 15504 17756 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:7611][0m
+INFO 2025-09-04 00:46:55,874 runserver 15504 17756 [mHTTP GET /login/ 200 [0.03, 127.0.0.1:7611][0m
+INFO 2025-09-04 00:47:08,606 runserver 15504 17756 [mHTTP GET / 200 [0.03, 127.0.0.1:8046][0m
+INFO 2025-09-04 00:47:08,673 runserver 15504 17756 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:8046][0m
+INFO 2025-09-04 00:47:10,987 runserver 15504 17756 [mHTTP GET /login/ 200 [0.02, 127.0.0.1:8046][0m
+INFO 2025-09-04 00:47:15,544 runserver 15504 17756 [mHTTP GET / 200 [0.04, 127.0.0.1:8439][0m
+INFO 2025-09-04 00:47:15,611 runserver 15504 17756 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:8439][0m
+INFO 2025-09-04 00:47:17,581 runserver 15504 17756 [mHTTP GET /register/ 200 [0.03, 127.0.0.1:8439][0m
+INFO 2025-09-04 00:48:23,737 autoreload 17148 5812 Watching for file changes with StatReloader
+INFO 2025-09-04 00:49:59,192 autoreload 13844 15300 Watching for file changes with StatReloader
+INFO 2025-09-04 00:50:32,828 runserver 13844 12560 [mHTTP GET / 200 [0.05, 127.0.0.1:5480][0m
+INFO 2025-09-04 00:50:32,926 runserver 13844 12560 [mHTTP GET /api/cart/ 200 [0.01, 127.0.0.1:5480][0m
+WARNING 2025-09-04 00:50:33,269 log 13844 14036 Not Found: /favicon.ico
+WARNING 2025-09-04 00:50:33,271 runserver 13844 12560 [33mHTTP GET /favicon.ico 404 [0.07, 127.0.0.1:5480][0m
+INFO 2025-09-04 00:50:37,709 runserver 13844 12560 [mHTTP GET /products/ 200 [0.07, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:37,794 runserver 13844 12560 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:41,292 runserver 13844 12560 [mHTTP GET /products/?price_range=50-100 200 [0.03, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:41,357 runserver 13844 12560 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:42,433 runserver 13844 12560 [mHTTP GET /products/?price_range=200-500 200 [0.03, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:42,495 runserver 13844 12560 [mHTTP GET /api/cart/ 200 [0.01, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:44,712 runserver 13844 12560 [mHTTP GET / 200 [0.03, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:44,772 runserver 13844 12560 [mHTTP GET /api/cart/ 200 [0.01, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:50,902 runserver 13844 12560 [32mHTTP GET /admin 301 [0.04, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:50,988 runserver 13844 12560 [32mHTTP GET /admin/ 302 [0.08, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:51,234 runserver 13844 12560 [mHTTP GET /admin/login/?next=/admin/ 200 [0.24, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:51,643 runserver 13844 12560 [mHTTP GET /static/admin/css/base.css 200 [0.38, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:51,665 runserver 13844 12560 [mHTTP GET /static/admin/js/nav_sidebar.js 200 [0.01, 127.0.0.1:13548][0m
+INFO 2025-09-04 00:50:51,706 runserver 13844 12560 [mHTTP GET /static/admin/css/dark_mode.css 200 [0.43, 127.0.0.1:6972][0m
+INFO 2025-09-04 00:50:51,710 runserver 13844 12560 [mHTTP GET /static/admin/css/responsive.css 200 [0.43, 127.0.0.1:7606][0m
+INFO 2025-09-04 00:50:51,720 runserver 13844 12560 [mHTTP GET /static/admin/css/nav_sidebar.css 200 [0.44, 127.0.0.1:1967][0m
+INFO 2025-09-04 00:50:51,727 runserver 13844 12560 [mHTTP GET /static/admin/js/theme.js 200 [0.45, 127.0.0.1:3639][0m
+INFO 2025-09-04 00:50:51,729 runserver 13844 12560 [mHTTP GET /static/admin/css/login.css 200 [0.45, 127.0.0.1:9483][0m
+INFO 2025-09-04 00:50:51,760 runserver 13844 12560 [mHTTP GET /static/admin/img/icon-no.svg 200 [0.02, 127.0.0.1:3639][0m
+INFO 2025-09-04 00:51:09,376 runserver 13844 12560 [mHTTP GET /admin/login/?next=/admin/ 200 [0.03, 127.0.0.1:3639][0m
+ERROR 2025-09-04 00:51:14,211 log 13844 7024 Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python\Python310\lib\site-packages\asgiref\sync.py", line 489, in thread_handler
+    raise exc_info[1]
+  File "C:\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+  File "C:\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "C:\Python\Python310\lib\site-packages\asgiref\sync.py", line 439, in __call__
+    ret = await asyncio.shield(exec_coro)
+  File "C:\Python\Python310\lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Python\Python310\lib\site-packages\asgiref\sync.py", line 493, in thread_handler
+    return func(*args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\contrib\admin\sites.py", line 440, in login
+    return LoginView.as_view(**defaults)(request)
+  File "C:\Python\Python310\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\views\decorators\debug.py", line 141, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Python\Python310\lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\contrib\auth\views.py", line 88, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\views\generic\edit.py", line 150, in post
+    if form.is_valid():
+  File "C:\Python\Python310\lib\site-packages\django\forms\forms.py", line 197, in is_valid
+    return self.is_bound and not self.errors
+  File "C:\Python\Python310\lib\site-packages\django\forms\forms.py", line 192, in errors
+    self.full_clean()
+  File "C:\Python\Python310\lib\site-packages\django\forms\forms.py", line 328, in full_clean
+    self._clean_form()
+  File "C:\Python\Python310\lib\site-packages\django\forms\forms.py", line 349, in _clean_form
+    cleaned_data = self.clean()
+  File "C:\Python\Python310\lib\site-packages\django\contrib\auth\forms.py", line 250, in clean
+    self.user_cache = authenticate(
+  File "C:\Python\Python310\lib\site-packages\django\views\decorators\debug.py", line 73, in sensitive_variables_wrapper
+    return func(*func_args, **func_kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\contrib\auth\__init__.py", line 79, in authenticate
+    user = backend.authenticate(request, **credentials)
+  File "C:\Python\Python310\lib\site-packages\django\contrib\auth\backends.py", line 42, in authenticate
+    user = UserModel._default_manager.get_by_natural_key(username)
+  File "C:\Python\Python310\lib\site-packages\django\contrib\auth\base_user.py", line 55, in get_by_natural_key
+    return self.get(**{self.model.USERNAME_FIELD: username})
+  File "C:\Python\Python310\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python\Python310\lib\site-packages\django\db\models\query.py", line 643, in get
+    num = len(clone)
+  File "C:\Python\Python310\lib\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+  File "C:\Python\Python310\lib\site-packages\django\db\models\query.py", line 1926, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Python\Python310\lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "C:\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "C:\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such table: users
+ERROR 2025-09-04 00:51:14,236 runserver 13844 12560 [35;1mHTTP POST /admin/login/?next=/admin/ 500 [0.25, 127.0.0.1:3639][0m
+INFO 2025-09-04 10:14:35,361 autoreload 16744 1116 Watching for file changes with StatReloader
+INFO 2025-09-04 10:14:52,617 runserver 16744 18008 [mHTTP GET / 200 [0.07, 127.0.0.1:11233][0m
+INFO 2025-09-04 10:14:52,717 runserver 16744 18008 [mHTTP GET /api/cart/ 200 [0.01, 127.0.0.1:11233][0m
+WARNING 2025-09-04 10:14:53,025 log 16744 20540 Not Found: /favicon.ico
+WARNING 2025-09-04 10:14:53,026 runserver 16744 18008 [33mHTTP GET /favicon.ico 404 [0.04, 127.0.0.1:11233][0m
+INFO 2025-09-04 10:27:08,137 autoreload 7904 18420 Watching for file changes with StatReloader
+INFO 2025-09-04 10:28:11,549 runserver 7904 19816 [mHTTP GET / 200 [0.42, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:11,657 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:21,359 runserver 7904 19816 [mHTTP GET / 200 [0.03, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:21,412 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.01, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:28,146 runserver 7904 19816 [32mHTTP GET /admin/ 302 [0.04, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:28,237 runserver 7904 19816 [mHTTP GET /admin/login/?next=/admin/ 200 [0.09, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:39,509 runserver 7904 19816 [mHTTP POST /admin/login/?next=/admin/ 200 [0.47, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:47,069 runserver 7904 19816 [32mHTTP POST /admin/login/?next=/admin/ 302 [0.85, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:47,123 runserver 7904 19816 [mHTTP GET /admin/ 200 [0.05, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:47,245 runserver 7904 19816 [mHTTP GET /static/admin/css/dashboard.css 200 [0.09, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:47,263 runserver 7904 19816 [mHTTP GET /static/admin/img/icon-addlink.svg 200 [0.01, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:28:47,264 runserver 7904 19816 [mHTTP GET /static/admin/img/icon-changelink.svg 200 [0.01, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:28:52,210 runserver 7904 19816 [mHTTP GET / 200 [0.02, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:28:52,550 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.30, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:28:55,798 runserver 7904 19816 [mHTTP GET /products/ 200 [0.06, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:28:55,870 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:00,197 runserver 7904 19816 [mHTTP GET /products/ 200 [0.02, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:00,266 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.03, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:02,944 runserver 7904 19816 [mHTTP GET /products/ 200 [0.03, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:03,013 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.03, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:04,018 runserver 7904 19816 [mHTTP GET / 200 [0.03, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:04,105 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:07,775 runserver 7904 19816 [mHTTP GET / 200 [0.02, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:07,839 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.03, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:09,760 runserver 7904 19816 [mHTTP GET /cart/ 200 [0.14, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:11,451 runserver 7904 19816 [mHTTP GET /products/ 200 [0.03, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:11,539 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:14,786 runserver 7904 19816 [mHTTP GET /products/ 200 [0.02, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:14,866 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.03, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:18,149 runserver 7904 19816 [mHTTP GET / 200 [0.03, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:18,227 runserver 7904 19816 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:28,442 runserver 7904 19816 [mHTTP GET /admin/ 200 [0.03, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:43,933 runserver 7904 19816 [mHTTP GET /admin/products/product/add/ 200 [0.09, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:43,974 runserver 7904 19816 [mHTTP GET /static/admin/css/forms.css 200 [0.01, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:44,002 runserver 7904 19816 [mHTTP GET /static/admin/js/jquery.init.js 200 [0.02, 127.0.0.1:1332][0m
+INFO 2025-09-04 10:29:44,005 runserver 7904 19816 [mHTTP GET /static/admin/js/core.js 200 [0.02, 127.0.0.1:4165][0m
+INFO 2025-09-04 10:29:44,008 runserver 7904 19816 [mHTTP GET /static/admin/js/collapse.js 200 [0.03, 127.0.0.1:9089][0m
+INFO 2025-09-04 10:29:44,022 runserver 7904 19816 [mHTTP GET /static/admin/js/admin/RelatedObjectLookups.js 200 [0.04, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:44,033 runserver 7904 19816 [mHTTP GET /static/admin/css/widgets.css 200 [0.03, 127.0.0.1:1332][0m
+INFO 2025-09-04 10:29:44,038 runserver 7904 19816 [mHTTP GET /static/admin/js/actions.js 200 [0.03, 127.0.0.1:4165][0m
+INFO 2025-09-04 10:29:44,044 runserver 7904 19816 [mHTTP GET /static/admin/js/urlify.js 200 [0.03, 127.0.0.1:9089][0m
+INFO 2025-09-04 10:29:44,056 runserver 7904 19816 [mHTTP GET /admin/jsi18n/ 200 [0.08, 127.0.0.1:3624][0m
+INFO 2025-09-04 10:29:44,057 runserver 7904 19816 [mHTTP GET /static/admin/js/prepopulate.js 200 [0.03, 127.0.0.1:1366][0m
+INFO 2025-09-04 10:29:44,065 runserver 7904 19816 [mHTTP GET /static/admin/js/prepopulate_init.js 200 [0.01, 127.0.0.1:4165][0m
+INFO 2025-09-04 10:29:44,094 runserver 7904 19816 [mHTTP GET /static/admin/js/vendor/jquery/jquery.js 200 [0.11, 127.0.0.1:3131][0m
+INFO 2025-09-04 10:29:44,113 runserver 7904 19816 [mHTTP GET /static/admin/img/icon-viewlink.svg 200 [0.01, 127.0.0.1:3131][0m
+INFO 2025-09-04 10:29:44,123 runserver 7904 19816 [mHTTP GET /static/admin/js/change_form.js 200 [0.01, 127.0.0.1:3131][0m
+INFO 2025-09-04 10:29:44,176 runserver 7904 19816 [mHTTP GET /static/admin/js/vendor/xregexp/xregexp.js 200 [0.14, 127.0.0.1:1332][0m
+INFO 2025-09-04 10:51:32,741 autoreload 11308 7916 Watching for file changes with StatReloader
+INFO 2025-09-04 10:51:47,064 runserver 11308 9320 [mHTTP GET / 200 [0.05, 127.0.0.1:9771][0m
+INFO 2025-09-04 10:51:47,182 runserver 11308 9320 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:9771][0m
+INFO 2025-09-04 10:51:51,408 runserver 11308 9320 [mHTTP GET /orders/ 200 [0.18, 127.0.0.1:9771][0m
+INFO 2025-09-04 10:51:51,472 runserver 11308 9320 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:9771][0m
+INFO 2025-09-04 10:51:55,098 runserver 11308 9320 [mHTTP GET / 200 [0.02, 127.0.0.1:12494][0m
+INFO 2025-09-04 10:51:55,171 runserver 11308 9320 [mHTTP GET /api/cart/ 200 [0.03, 127.0.0.1:12494][0m
+INFO 2025-09-04 10:51:57,451 runserver 11308 9320 [mHTTP GET /products/ 200 [0.04, 127.0.0.1:12494][0m
+INFO 2025-09-04 10:51:57,520 runserver 11308 9320 [mHTTP GET /api/cart/ 200 [0.02, 127.0.0.1:12494][0m
