@@ -1,0 +1,35 @@
+# Core Django packages
+Django==4.2.7
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+
+# Authentication
+djangorestframework-simplejwt==5.3.0
+
+# Database
+psycopg2-binary==2.9.7
+
+# Caching
+django-redis==5.4.0
+redis==5.0.1
+
+# Real-time features
+channels==4.0.0
+channels-redis==4.1.0
+
+# Filtering and pagination
+django-filter==23.3
+
+# Environment variables
+python-decouple==3.8
+
+# Image handling (for product images)
+Pillow==10.0.1
+
+# API documentation
+drf-yasg==1.21.7
+
+# Development and testing
+pytest==7.4.2
+pytest-django==4.6.0
+factory-boy==3.3.0 
