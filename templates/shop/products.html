@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - E-commerce Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .product-image {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .price-tag {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .sidebar {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        .filter-section {
+            margin-bottom: 2rem;
+        }
+        .filter-section h6 {
+            color: #495057;
+            font-weight: 600;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pagination {
+            justify-content: center;
+        }
+        .badge-stock {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .search-results-info {
+            background: #e9ecef;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-store"></i> E-commerce Store
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/products/">Products</a>
+                    </li>
+                </ul>
+                
+                <!-- Search Form -->
+                <form class="d-flex me-3" action="/products/" method="GET">
+                    {% if request.GET.category %}<input type="hidden" name="category" value="{{ request.GET.category }}">{% endif %}
+                    {% if request.GET.price_range %}<input type="hidden" name="price_range" value="{{ request.GET.price_range }}">{% endif %}
+                    <input class="form-control me-2" type="search" name="search" value="{{ request.GET.search|default:'' }}" placeholder="Search products..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                
+                <!-- User Menu -->
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="/cart/">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cart-count" class="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i> {{ user.first_name|default:user.username }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/profile/">Profile</a></li>
+                            <li><a class="dropdown-item" href="/orders/">My Orders</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/logout/">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login/">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register/">Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="bg-light">
+        <div class="container">
+            <ol class="breadcrumb py-3 mb-0">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">Products</li>
+                {% if current_category_name %}
+                <li class="breadcrumb-item active">{{ current_category_name }}</li>
+                {% endif %}
+            </ol>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <!-- Search Results Info -->
+        {% if search_query or current_category_name %}
+        <div class="search-results-info">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    {% if search_query %}
+                        <i class="fas fa-search"></i> Search results for "<strong>{{ search_query }}</strong>"
+                    {% endif %}
+                    {% if current_category_name %}
+                        <i class="fas fa-tag"></i> Category: <strong>{{ current_category_name }}</strong>
+                    {% endif %}
+                    <span class="text-muted">- {{ page_obj.paginator.count }} products found</span>
+                </div>
+                <a href="/products/" class="btn btn-sm btn-outline-secondary">
+                    <i class="fas fa-times"></i> Clear Filters
+                </a>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            <!-- Sidebar Filters -->
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="sidebar">
+                    <!-- Categories Filter -->
+                    <div class="filter-section">
+                        <h6><i class="fas fa-list"></i> Categories</h6>
+                        <div class="list-group list-group-flush">
+                            <a href="/products/" class="list-group-item list-group-item-action {% if not current_category %}active{% endif %}">
+                                All Categories
+                            </a>
+                            {% for category in categories %}
+                            <a href="/products/?category={{ category.slug }}" 
+                               class="list-group-item list-group-item-action {% if current_category == category.slug %}active{% endif %}">
+                                {{ category.name }}
+                                <span class="badge bg-secondary float-end">{{ category.products.count }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="filter-section">
+                        <h6><i class="fas fa-dollar-sign"></i> Price Range</h6>
+                        <form method="GET" action="/products/">
+                            {% if current_category %}<input type="hidden" name="category" value="{{ current_category }}">{% endif %}
+                            {% if search_query %}<input type="hidden" name="search" value="{{ search_query }}">{% endif %}
+                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price_range" value="" id="price-all" 
+                                       {% if not request.GET.price_range %}checked{% endif %} onchange="this.form.submit()">
+                                <label class="form-check-label" for="price-all">All Prices</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price_range" value="0-50" id="price-1" 
+                                       {% if request.GET.price_range == "0-50" %}checked{% endif %} onchange="this.form.submit()">
+                                <label class="form-check-label" for="price-1">$0 - $50</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price_range" value="50-100" id="price-2" 
+                                       {% if request.GET.price_range == "50-100" %}checked{% endif %} onchange="this.form.submit()">
+                                <label class="form-check-label" for="price-2">$50 - $100</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price_range" value="100-200" id="price-3" 
+                                       {% if request.GET.price_range == "100-200" %}checked{% endif %} onchange="this.form.submit()">
+                                <label class="form-check-label" for="price-3">$100 - $200</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price_range" value="200-500" id="price-4" 
+                                       {% if request.GET.price_range == "200-500" %}checked{% endif %} onchange="this.form.submit()">
+                                <label class="form-check-label" for="price-4">$200 - $500</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price_range" value="500+" id="price-5" 
+                                       {% if request.GET.price_range == "500+" %}checked{% endif %} onchange="this.form.submit()">
+                                <label class="form-check-label" for="price-5">$500+</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Stock Filter -->
+                    <div class="filter-section">
+                        <h6><i class="fas fa-boxes"></i> Availability</h6>
+                        <form method="GET" action="/products/">
+                            {% if current_category %}<input type="hidden" name="category" value="{{ current_category }}">{% endif %}
+                            {% if search_query %}<input type="hidden" name="search" value="{{ search_query }}">{% endif %}
+                            {% if request.GET.price_range %}<input type="hidden" name="price_range" value="{{ request.GET.price_range }}">{% endif %}
+                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="in_stock" value="true" id="in-stock" 
+                                       {% if request.GET.in_stock %}checked{% endif %} onchange="this.form.submit()">
+                                <label class="form-check-label" for="in-stock">In Stock Only</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="col-lg-9 col-md-8">
+                <!-- Sorting and View Options -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h4>Products {% if current_category_name %}in {{ current_category_name }}{% endif %}</h4>
+                        <small class="text-muted">
+                            Showing {{ page_obj.start_index }}-{{ page_obj.end_index }} of {{ page_obj.paginator.count }} products
+                        </small>
+                    </div>
+                    
+                    <div class="d-flex gap-2">
+                        <!-- Items per page -->
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                Show {{ items_per_page }}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item {% if items_per_page == 10 %}active{% endif %}" 
+                                       href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if search_query %}search={{ search_query }}&{% endif %}{% if request.GET.price_range %}price_range={{ request.GET.price_range }}&{% endif %}{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}per_page=10">10</a></li>
+                                <li><a class="dropdown-item {% if items_per_page == 12 %}active{% endif %}" 
+                                       href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if search_query %}search={{ search_query }}&{% endif %}{% if request.GET.price_range %}price_range={{ request.GET.price_range }}&{% endif %}{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}per_page=12">12</a></li>
+                                <li><a class="dropdown-item {% if items_per_page == 20 %}active{% endif %}" 
+                                       href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if search_query %}search={{ search_query }}&{% endif %}{% if request.GET.price_range %}price_range={{ request.GET.price_range }}&{% endif %}{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}per_page=20">20</a></li>
+                                <li><a class="dropdown-item {% if items_per_page == 30 %}active{% endif %}" 
+                                       href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if search_query %}search={{ search_query }}&{% endif %}{% if request.GET.price_range %}price_range={{ request.GET.price_range }}&{% endif %}{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}per_page=30">30</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Sort options -->
+                        <form method="GET" action="/products/" class="d-flex">
+                            {% if current_category %}<input type="hidden" name="category" value="{{ current_category }}">{% endif %}
+                            {% if search_query %}<input type="hidden" name="search" value="{{ search_query }}">{% endif %}
+                            {% if request.GET.price_range %}<input type="hidden" name="price_range" value="{{ request.GET.price_range }}">{% endif %}
+                            {% if items_per_page %}<input type="hidden" name="per_page" value="{{ items_per_page }}">{% endif %}
+                            
+                            <select name="sort" class="form-select form-select-sm" onchange="this.form.submit()">
+                                <option value="">Sort by</option>
+                                <option value="name" {% if request.GET.sort == "name" %}selected{% endif %}>Name (A-Z)</option>
+                                <option value="-name" {% if request.GET.sort == "-name" %}selected{% endif %}>Name (Z-A)</option>
+                                <option value="price" {% if request.GET.sort == "price" %}selected{% endif %}>Price (Low to High)</option>
+                                <option value="-price" {% if request.GET.sort == "-price" %}selected{% endif %}>Price (High to Low)</option>
+                                <option value="-created_at" {% if request.GET.sort == "-created_at" %}selected{% endif %}>Newest First</option>
+                                <option value="created_at" {% if request.GET.sort == "created_at" %}selected{% endif %}>Oldest First</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                {% if products %}
+                <div class="row g-4">
+                    {% for product in products %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="card product-card border-0 shadow-sm">
+                            <div class="position-relative">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" class="card-img-top product-image" alt="{{ product.name }}">
+                                {% else %}
+                                    <div class="bg-light d-flex align-items-center justify-content-center product-image">
+                                        <i class="fas fa-image fa-3x text-muted"></i>
+                                    </div>
+                                {% endif %}
+                                
+                                <!-- Stock Badge -->
+                                {% if product.stock <= 0 %}
+                                    <span class="badge bg-danger badge-stock">Out of Stock</span>
+                                {% elif product.stock <= 10 %}
+                                    <span class="badge bg-warning badge-stock">Low Stock</span>
+                                {% endif %}
+                                
+                                <!-- Featured Badge -->
+                                {% if product.is_featured %}
+                                    <span class="badge bg-success position-absolute top-0 start-0 m-2">
+                                        <i class="fas fa-star"></i> Featured
+                                    </span>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">{{ product.name }}</h6>
+                                <p class="card-text text-muted small flex-grow-1">{{ product.description|truncatewords:20 }}</p>
+                                <div class="mb-2">
+                                    <small class="text-muted">Category: {{ product.category.name }}</small>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="price-tag">${{ product.price }}</span>
+                                    {% if product.stock > 0 %}
+                                        <button class="btn btn-primary btn-sm" onclick="addToCart({{ product.id }})">
+                                            <i class="fas fa-cart-plus"></i> Add to Cart
+                                        </button>
+                                    {% else %}
+                                        <button class="btn btn-secondary btn-sm" disabled>
+                                            <i class="fas fa-times"></i> Out of Stock
+                                        </button>
+                                    {% endif %}
+                                </div>
+                                {% if product.stock > 0 and product.stock <= 10 %}
+                                <div class="mt-2">
+                                    <small class="text-warning">
+                                        <i class="fas fa-exclamation-triangle"></i> Only {{ product.stock }} left!
+                                    </small>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination -->
+                {% if page_obj.has_other_pages %}
+                <nav aria-label="Products pagination" class="mt-5">
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if search_query %}search={{ search_query }}&{% endif %}{% if request.GET.price_range %}price_range={{ request.GET.price_range }}&{% endif %}{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}{% if items_per_page %}per_page={{ items_per_page }}&{% endif %}page={{ page_obj.previous_page_number }}">
+                                    <i class="fas fa-chevron-left"></i> Previous
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active">
+                                    <span class="page-link">{{ num }}</span>
+                                </li>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if search_query %}search={{ search_query }}&{% endif %}{% if request.GET.price_range %}price_range={{ request.GET.price_range }}&{% endif %}{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}{% if items_per_page %}per_page={{ items_per_page }}&{% endif %}page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if search_query %}search={{ search_query }}&{% endif %}{% if request.GET.price_range %}price_range={{ request.GET.price_range }}&{% endif %}{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}{% if items_per_page %}per_page={{ items_per_page }}&{% endif %}page={{ page_obj.next_page_number }}">
+                                    Next <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+
+                {% else %}
+                <!-- No Products Found -->
+                <div class="text-center py-5">
+                    <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                    <h4>No products found</h4>
+                    <p class="text-muted">Try adjusting your search criteria or browse all products.</p>
+                    <a href="/products/" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> View All Products
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden CSRF token for AJAX -->
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    {% csrf_token %}
+    <input type="hidden" id="csrf-token" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Get CSRF token
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // Add to cart function
+        function addToCart(productId) {
+            // Try multiple methods to get CSRF token
+            let token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ||
+                       document.querySelector('#csrf-token')?.value || 
+                       document.querySelector('[name=csrfmiddlewaretoken]')?.value || 
+                       document.querySelector('input[name="csrfmiddlewaretoken"]')?.value ||
+                       getCookie('csrftoken');
+            
+            console.log('CSRF Token:', token ? `Found (length: ${token.length})` : 'Not found');
+            
+            if (!token) {
+                showNotification('Security token missing. Please refresh the page.', 'error');
+                return;
+            }
+            
+            fetch('/api/cart/add/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': token
+                },
+                body: JSON.stringify({
+                    product_id: productId,
+                    quantity: 1
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success || data.id) {
+                    updateCartCount();
+                    showNotification('Product added to cart!', 'success');
+                } else {
+                    showNotification(data.error || 'Error adding product to cart', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Error adding product to cart', 'error');
+            });
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            fetch('/api/cart/')
+            .then(response => response.json())
+            .then(data => {
+                const cartCount = document.getElementById('cart-count');
+                if (cartCount) {
+                    cartCount.textContent = data.total_items || 0;
+                    cartCount.style.display = (data.total_items && data.total_items > 0) ? 'flex' : 'none';
+                }
+            })
+            .catch(error => {
+                console.error('Error updating cart count:', error);
+                const cartCount = document.getElementById('cart-count');
+                if (cartCount) {
+                    cartCount.textContent = '0';
+                    cartCount.style.display = 'none';
+                }
+            });
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show position-fixed`;
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.zIndex = '9999';
+            notification.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 3000);
+        }
+
+        // Initialize cart count on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            
+            // Debug: Check if CSRF token is available
+            const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+            console.log('Page loaded. CSRF token available:', !!token, token ? `(length: ${token.length})` : '');
+        });
+    </script>
+</body>
+</html> 
